@@ -24,9 +24,9 @@ public class VetServiceMap  extends AbstractMapService<Vet, Long> implements Vet
 	}
 
 	@Override
-	public Vet save(Long id, Vet object) {
+	public Vet save(Vet object) {
 		// TODO Auto-generated method stub
-		return super.save(id, object);
+		return super.save(object);
 	}
 
 	@Override
@@ -39,12 +39,6 @@ public class VetServiceMap  extends AbstractMapService<Vet, Long> implements Vet
 	public void delete(Vet object) {
 		// TODO Auto-generated method stub
 		super.delete(object);
-	}
-
-	@Override
-	public Vet save(Vet object) {
-		// TODO Auto-generated method stub
-		return super.save(object.getId(), object);
 	}
 
 }

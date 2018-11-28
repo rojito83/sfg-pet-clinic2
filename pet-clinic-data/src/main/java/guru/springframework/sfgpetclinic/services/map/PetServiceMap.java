@@ -24,9 +24,9 @@ public class PetServiceMap  extends AbstractMapService<Pet, Long> implements Pet
 	}
 
 	@Override
-	public Pet save(Long id, Pet object) {
+	public Pet save(Pet object) {
 		// TODO Auto-generated method stub
-		return super.save(id, object);
+		return super.save(object);
 	}
 
 	@Override
@@ -39,12 +39,6 @@ public class PetServiceMap  extends AbstractMapService<Pet, Long> implements Pet
 	public void delete(Pet object) {
 		// TODO Auto-generated method stub
 		super.delete(object);
-	}
-
-	@Override
-	public Pet save(Pet object) {
-		// TODO Auto-generated method stub
-		return super.save(object.getId(), object);
 	}
 	
 }
