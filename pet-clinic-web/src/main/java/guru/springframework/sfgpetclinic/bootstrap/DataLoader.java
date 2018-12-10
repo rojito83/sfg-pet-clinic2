@@ -10,10 +10,12 @@ import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.model.Specialty;
 import guru.springframework.sfgpetclinic.model.Vet;
+import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.services.SpecialtyService;
 import guru.springframework.sfgpetclinic.services.VetService;
+import guru.springframework.sfgpetclinic.services.VisitService;
 import guru.springframework.sfgpetclinic.services.map.OwnerMapService;
 import guru.springframework.sfgpetclinic.services.map.VetMapService;
 
@@ -24,15 +26,16 @@ public class DataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeServce;
 	private final SpecialtyService specialtyService;
+	private final VisitService visitService;
 
 	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeServce,
-			SpecialtyService specialtyService) {
+			SpecialtyService specialtyService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeServce = petTypeServce;
 		this.specialtyService = specialtyService;
+		this.visitService = visitService;
 	}
-
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -84,6 +87,13 @@ public class DataLoader implements CommandLineRunner {
 		owner2.getPets().add(fionasCat);
 		
 		ownerService.save(owner2);	
+		
+		Visit catVisit = new Visit();
+		catVisit.setPet(fionasCat);
+		catVisit.setDate(LocalDate.now());
+		catVisit.setDescription("Sneezey Kitty");
+		
+		visitService.save(catVisit);
 		
 		System.out.println("Loaded Owners...");
 		
